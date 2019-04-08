@@ -10,8 +10,6 @@ function zeusChat(domOptions) {
 		googlePrivateKey: process.env.GOOGLE_PRIVATE_KEY
 	};
 
-	console.table(envOptions);
-
 	const options = Object.assign(envOptions, domOptions);
 
 	if (!options.element) {
