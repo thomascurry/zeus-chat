@@ -5,8 +5,6 @@ import QuickReplies from './QuickReplies';
 import Message from './Message';
 import googleAuth from 'google-oauth-jwt';
 
-require('dotenv').config();
-
 class Chatbot extends Component {
 	messagesEnd;
 	userInput;
