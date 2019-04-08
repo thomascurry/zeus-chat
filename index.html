@@ -8,14 +8,16 @@
         <noscript>
             You need to enable JavaScript to run this app.
         </noscript>
-        <div id="root"></div>
+        <div id="test"></div>
+        
         <script type="text/javascript">
-        window.onload = () => {
-            var selectEl = document.querySelector('#root')
-            zeusChat({
-                element: selectEl
-            })
-        }
-        </script>
-    </body>
+            window.onload = () => {
+                var selectEl = document.querySelector('#test')
+                zeusChat({
+                    element: selectEl
+                })
+            }
+            </script>
+    <script type="text/javascript" src="zeus-chat.js"></script></body>
+    
 </html>
