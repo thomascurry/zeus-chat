@@ -1,0 +1,8 @@
+@font-face {
+    font-family: "Arimo Bold";
+    src: url("assets/fonts/arimo-bold.woff") format("woff");
+}
+
+.chatbot {
+    font-family: "Arimo Bold";
+}
