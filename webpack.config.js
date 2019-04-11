@@ -1,53 +1,49 @@
-let dotenv = require("dotenv").config({ path: __dirname + "/.env" });
+const path = require('path');
 
-const path = require("path");
-const webpack = require("webpack");
-// const Dotenv = require('dotenv-webpack');
-// const dotEnv = new Dotenv();
+const Dotenv = require('dotenv-webpack');
 
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const dotEnv = new Dotenv();
+
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
-  template: path.join(__dirname, "examples/src/index.html"),
-  filename: "./index.html"
+  template: path.join(__dirname, 'examples/src/index.html'),
+  filename: './index.html',
 });
 
 module.exports = {
-  entry: path.join(__dirname, "examples/src/index.js"),
+  entry: path.join(__dirname, 'examples/src/index.js'),
   output: {
-    path: path.join(__dirname, "examples/dist"),
-    filename: "zeus-chat.js",
-    library: "zeusChat",
-    libraryExport: "default",
-    libraryTarget: "umd"
+    path: path.join(__dirname, 'examples/dist'),
+    filename: 'zeus-chat.js',
+    library: 'zeusChat',
+    libraryExport: 'default',
+    libraryTarget: 'umd',
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        use: "babel-loader",
-        exclude: /node_modules/
+        use: 'babel-loader',
+        exclude: /node_modules/,
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      }
-    ]
+        use: ['style-loader', 'css-loader'],
+      },
+      { test: /\.(eot|svg|ttf|woff|woff2)$/, loader: 'file-loader?name=public/fonts/[name].[ext]' },
+    ],
   },
   node: {
-    fs: "empty",
-    net: "empty",
-    tls: "empty"
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty',
   },
-  plugins: [
-    htmlWebpackPlugin,
-    new webpack.DefinePlugin({
-      "process.env": JSON.stringify(dotenv.parsed)
-    })
-  ],
+  plugins: [htmlWebpackPlugin, dotEnv],
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: ['.js', '.jsx'],
   },
   devServer: {
-    port: 3001
-  }
+    port: 3001,
+  },
 };
