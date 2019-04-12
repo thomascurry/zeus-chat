@@ -15,25 +15,48 @@
 
 .message {
   font-family: "Arimo Regular";
+  display: block;
+  position: relative;
   padding-top: 30;
   padding-bottom: 10;
 }
 
-.message .text-container {
-  width: 325;
-  height: 'auto';
-  display: 'block';
-  background: '#f0f0f0';
-  border-radius: 4;
-  position: 'relative';
-  margin: 'auto';
-}
-.message .text {
-  font-size: 14;
-  position: 'absolute';
-  bottom: 5;
-  right: 0;
-  color: '#999';
-  text-transform: 'capitalize';
+
+.message .bot-speaks {
+  font-size: 13;
+  position: absolute;
+  top: 10;
+  right: 30;
+  color: #999;
+  text-transform: capitalize;
 }
 
+.message .user-speaks {
+  font-size: 13;
+  position: absolute;
+  top: 10;
+  right: 30;
+  color: #999;
+  text-transform: capitalize;
+}
+
+.message .text-container {
+  width: 350;
+  height: auto;
+  display: block;
+  background: #f0f0f0;
+  border-radius: 4;
+  position: relative;
+  margin: auto;
+}
+
+.message .text-container .text-background {
+  padding: 8px 55px 8px 14px;
+  word-wrap: break-word;
+}
+
+.message .text-container .text-background .text {
+  font-size: 15;
+  margin: 0;
+  color: #2b2b2b;
+}
