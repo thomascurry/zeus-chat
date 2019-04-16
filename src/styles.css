@@ -50,13 +50,31 @@
   margin: auto;
 }
 
+.message .text-container.user {
+  width: 350;
+  height: auto;
+  display: block;
+  background: #005ea5;
+  border-radius: 4;
+  position: relative;
+  margin: auto;
+}
+
 .message .text-container .text-background {
   padding: 8px 55px 8px 14px;
   word-wrap: break-word;
+  white-space: normal;
 }
 
 .message .text-container .text-background .text {
   font-size: 15;
   margin: 0;
   color: #2b2b2b;
+}
+
+
+.message .text-container .text-background .text.user {
+  font-size: 15;
+  margin: 0;
+  color: #ffffff;
 }

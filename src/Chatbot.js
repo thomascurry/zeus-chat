@@ -242,7 +242,12 @@ class Chatbot extends Component {
             <a
               href="/"
               onClick={this.hide}
-              style={{ color: 'white', fontSize: 20, marginLeft: '150px' }}
+              style={{
+                color: 'white',
+                fontSize: 15,
+                marginLeft: '140px',
+                marginRight: '10px',
+              }}
             >
               Close
             </a>
@@ -252,7 +257,7 @@ class Chatbot extends Component {
               height: '100%',
               width: '100%',
               overflow: 'auto',
-              boxShadow: '-1px 1px 5px -2px rgba(0,0,0,0.38)',
+              boxShadow: '0px 0px 5px -2px rgba(0,0,0,0.38)',
             }}
           >
             {this.renderMessages(this.state.messages)}
@@ -268,7 +273,15 @@ class Chatbot extends Component {
           </div>
           <br />
           <input
-            style={{ width: '100%' }}
+            style={{
+              width: '100%',
+              height: '50px',
+              border: 0,
+              outline: 0,
+              background: 'transparent',
+              borderTop: '1px solid #bfc1c3',
+              marginTop: '-24px',
+            }}
             ref={input => (this.userInput = input)}
             type="text"
             onKeyPress={this._handleInputKeyPress}
@@ -312,6 +325,8 @@ class Chatbot extends Component {
             >
               Ask for help
             </a>
+            l
+            {' '}
           </span>
         </div>
         <div
