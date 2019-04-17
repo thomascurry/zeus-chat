@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Cookies from 'js-cookie';
+
 import { v4 as uuid } from 'uuid';
 import googleAuth from 'google-oauth-jwt';
 import QuickReplies from './QuickReplies';
@@ -18,6 +19,7 @@ class Chatbot extends Component {
 
     this.show = this.show.bind(this);
     this.hide = this.hide.bind(this);
+
     this.state = {
       messages: [],
       showChat: true,
@@ -39,6 +41,7 @@ class Chatbot extends Component {
           key: this.props.googlePrivateKey,
           scopes: ['https://www.googleapis.com/auth/cloud-platform'],
         },
+
         (err, token) => {
           resolve(token);
         },
@@ -102,6 +105,7 @@ class Chatbot extends Component {
           Authorization: `Bearer ${this.state.clientToken}`,
           'Content-Type': 'application/json; charset=utf-8',
         },
+
         body: JSON.stringify(requestBody),
       },
     ).then(data => data.json());
@@ -138,18 +142,23 @@ class Chatbot extends Component {
     event.preventDefault();
     event.stopPropagation();
 
-    this.setState({ showChat: true });
+    this.setState({
+      showChat: true,
+    });
   }
 
   hide(event) {
     event.preventDefault();
     event.stopPropagation();
 
-    this.setState({ showChat: false });
+    this.setState({
+      showChat: false,
+    });
   }
 
   renderOneMessage(message, i) {
     console.log(message);
+
     if (message.msg && message.msg.text && message.msg.text.text) {
       return (
         <Message
@@ -160,6 +169,7 @@ class Chatbot extends Component {
         />
       );
     }
+
     if (message.msg && message.msg.payload && message.msg.payload.quick_replies) {
       return (
         <QuickReplies
@@ -178,6 +188,7 @@ class Chatbot extends Component {
     if (stateMessages) {
       return stateMessages.map((message, i) => this.renderOneMessage(message, i));
     }
+
     return null;
   }
 
@@ -211,84 +222,35 @@ class Chatbot extends Component {
   render() {
     if (this.state.showChat) {
       return (
-        <div
-          className="Chatbot"
-          style={{
-            height: 400,
-            width: 400,
-            float: 'right',
-          }}
-        >
-          <div
-            style={{
-              height: 50,
-              verticalAlign: 'center',
-              backgroundColor: '#005ea5',
-              borderBottomColor: 'black',
-              borderBottomWidth: 1,
-              boxShadow: '-1px 1px 5px -2px rgba(0,0,0,0.38)',
-            }}
-          >
-            <h1
-              style={{
-                margin: '10px 0px 10px 10px',
-                display: 'inline-block',
-                fontSize: 25,
-                color: 'white',
-              }}
-            >
-              Virtual Assistant
-            </h1>
-            <a
-              href="/"
-              onClick={this.hide}
-              style={{
-                color: 'white',
-                fontSize: 15,
-                marginLeft: '140px',
-                marginRight: '10px',
-              }}
-            >
+        <div className="chatbot">
+          <div className="title-bar">
+            <h1 className="title">Virtual Assistant</h1>
+
+            <a href="/" onClick={this.hide} className="close">
               Close
             </a>
           </div>
-          <div
-            style={{
-              height: '100%',
-              width: '100%',
-              overflow: 'auto',
-              boxShadow: '0px 0px 5px -2px rgba(0,0,0,0.38)',
-            }}
-          >
-            {this.renderMessages(this.state.messages)}
-            <div
-              style={{
-                float: 'left',
-                clear: 'both',
-              }}
-              ref={(elem) => {
-                this.messagesEnd = elem;
-              }}
+          <div className="chat-container">
+            <div className="chat-body">
+              {this.renderMessages(this.state.messages)}
+              <div
+                ref={(elem) => {
+                  this.messagesEnd = elem;
+                }}
+              />
+            </div>
+            <br />
+            <input
+              className="chat-input"
+              ref={input => (this.userInput = input)}
+              type="text"
+              onKeyPress={this._handleInputKeyPress}
             />
           </div>
-          <br />
-          <input
-            style={{
-              width: '100%',
-              height: '50px',
-              border: 0,
-              outline: 0,
-              background: 'transparent',
-              borderTop: '1px solid #bfc1c3',
-              marginTop: '-24px',
-            }}
-            ref={input => (this.userInput = input)}
-            type="text"
-            onKeyPress={this._handleInputKeyPress}
-          />
         </div>
       );
     }
+
     return (
       <div
         className="Chatbot"
@@ -313,7 +275,12 @@ class Chatbot extends Component {
             boxShadow: '-1px 1px 5px -2px rgba(0,0,0,0.38)',
           }}
         >
-          <span style={{ display: 'inline-block', marginTop: '10px' }}>
+          <span
+            style={{
+              display: 'inline-block',
+              marginTop: '10px',
+            }}
+          >
             <a
               href="/"
               onClick={this.show}
@@ -326,9 +293,9 @@ class Chatbot extends Component {
               Ask for help
             </a>
             l
-            {' '}
           </span>
         </div>
+
         <div
           style={{
             float: 'left',
