@@ -5,7 +5,7 @@ import { v4 as uuid } from 'uuid';
 import googleAuth from 'google-oauth-jwt';
 import QuickReplies from './QuickReplies';
 import Message from './Message';
-import './styles.css';
+import './styles.scss';
 
 class Chatbot extends Component {
   messagesEnd;
@@ -129,9 +129,9 @@ class Chatbot extends Component {
   }
 
   componentDidUpdate() {
-    this.messagesEnd.scrollIntoView({
-      behaviour: 'smooth',
-    });
+    // this.messagesEnd.scrollIntoView({
+    //   behaviour: 'smooth',
+    // });
 
     if (this.userInput) {
       this.userInput.focus();
@@ -292,7 +292,6 @@ class Chatbot extends Component {
             >
               Ask for help
             </a>
-            l
           </span>
         </div>
 

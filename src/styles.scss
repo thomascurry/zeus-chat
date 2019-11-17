@@ -1,0 +1,134 @@
+@font-face {
+  font-family: "Arimo Bold";
+  src: url("assets/fonts/arimo-bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Arimo Regular";
+  src: url("assets/fonts/arimo-regular.woff") format("woff");
+}
+
+
+.chatbot {
+  font-family: "Arimo Bold";
+  height: 500px;
+  width: 400px;
+  float: right;
+  z-index: 5;
+  position: relative;
+  background: white;
+}
+
+.chatbot .title-bar {
+  height: 50;
+  vertical-align: center;
+  background-color: #005ea5;
+  border-bottom-color: black;
+  border-bottom-width: 1;
+  box-shadow: -1px 1px 5px -2px rgba(0, 0, 0, 0.38);
+}
+
+.chatbot .title-bar .title {
+  margin: 10px 0px 10px 10px;
+  display: inline-block;
+  font-size: 25;
+  color: white;
+}
+
+.chatbot .title-bar .close {
+  font-size: 15;
+  margin-left: 140px;
+  margin-right: 10px;
+  color: white;
+}
+
+
+.chatbot .chat-body {
+  height: 90%;
+  width: 100%;
+  overflow: auto;
+  color: white;
+}
+
+.chatbot .chat-container {
+  height: 100%;
+  width: 100%;
+  box-shadow: 0px 0px 5px -2px rgba(0, 0, 0, 0.38);
+}
+
+.chat-input {
+  width: 100%;
+  height: 50px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-top: 1px solid #bfc1c3;
+  margin-top: -24px;
+}
+
+.message {
+  font-family: "Arimo Regular";
+  color: black;
+  display: block;
+  position: relative;
+  padding-top: 30;
+  padding-bottom: 10;
+}
+
+
+.message .bot-speaks {
+  font-size: 13;
+  position: absolute;
+  top: 10;
+  right: 30;
+  color: #999;
+  text-transform: capitalize;
+}
+
+.message .user-speaks {
+  font-size: 13;
+  position: absolute;
+  top: 10;
+  right: 30;
+  color: #999;
+  text-transform: capitalize;
+}
+
+.message .text-container {
+  width: 350;
+  height: auto;
+  display: block;
+  background: #f0f0f0;
+  border-radius: 4px;
+  position: relative;
+  margin: auto;
+}
+
+.message .text-container.user {
+  width: 350;
+  height: auto;
+  display: block;
+  background: #005ea5;
+  border-radius: 4px;
+  position: relative;
+  margin: auto;
+}
+
+.message .text-container .text-background {
+  padding: 8px 55px 8px 14px;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.message .text-container .text-background .text {
+  font-size: 15;
+  margin: 0;
+  color: #2b2b2b;
+}
+
+
+.message .text-container .text-background .text.user {
+  font-size: 15;
+  margin: 0;
+  color: #ffffff;
+}

@@ -11,6 +11,8 @@ const htmlWebpackPlugin = new HtmlWebpackPlugin({
   filename: './index.html',
 });
 
+const CopyPlugin = require('copy-webpack-plugin');
+
 module.exports = {
   entry: path.join(__dirname, 'examples/src/index.js'),
   output: {
@@ -28,8 +30,8 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        test: /\.s[ac]ss$/i,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       { test: /\.(eot|svg|ttf|woff|woff2)$/, loader: 'file-loader?name=public/fonts/[name].[ext]' },
     ],
@@ -39,11 +41,21 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
   },
-  plugins: [htmlWebpackPlugin, dotEnv],
+  plugins: [
+    new CopyPlugin([
+      {
+        from: 'examples/src/assets',
+        to: 'dist',
+      },
+    ]),
+    htmlWebpackPlugin,
+    dotEnv,
+  ],
   resolve: {
     extensions: ['.js', '.jsx'],
   },
   devServer: {
     port: 3001,
+    historyApiFallback: true,
   },
 };
