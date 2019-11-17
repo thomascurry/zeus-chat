@@ -22,7 +22,7 @@ class Chatbot extends Component {
 
     this.state = {
       messages: [],
-      showChat: true,
+      showChat: false,
       clientToken: false,
     };
 
@@ -129,9 +129,9 @@ class Chatbot extends Component {
   }
 
   componentDidUpdate() {
-    // this.messagesEnd.scrollIntoView({
-    //   behaviour: 'smooth',
-    // });
+    this.messagesEnd.scrollIntoView({
+      behaviour: 'smooth',
+    });
 
     if (this.userInput) {
       this.userInput.focus();
@@ -240,12 +240,15 @@ class Chatbot extends Component {
               />
             </div>
             <br />
-            <input
-              className="chat-input"
-              ref={input => (this.userInput = input)}
-              type="text"
-              onKeyPress={this._handleInputKeyPress}
-            />
+            <div style={{ width: '100%' }}>
+              <input
+                className="chat-input"
+                style={{ height: 30, background: 'white' }}
+                ref={input => (this.userInput = input)}
+                type="text"
+                onKeyPress={this._handleInputKeyPress}
+              />
+            </div>
           </div>
         </div>
       );
@@ -253,8 +256,9 @@ class Chatbot extends Component {
 
     return (
       <div
-        className="Chatbot"
+        className="chatbot"
         style={{
+          background: 'transparent',
           height: 400,
           width: 400,
           position: 'relative',
